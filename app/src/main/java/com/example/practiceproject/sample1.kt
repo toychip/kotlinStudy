@@ -1,7 +1,7 @@
 package com.example.practiceproject
 
 fun main(){
-    array()
+    ignoreNulls("ss")
 
 }
 
@@ -84,11 +84,67 @@ fun array() {
     arrayList[0] = 7
 }
 
+// 6. for / while
 
+fun forAndWhile(){
+    val students = arrayListOf("Tim", "kyoungmin", "junhyoung")
 
+    for (name in students){
+        println("${name}")
+    }
 
+    for ((index, name) in students.withIndex()){
+        println("${index+1}번째 학생: ${name}")
+    }
 
+    var sum = 0
+    for (i in 1..10 step 4){
+        println(i)
+        sum += i
+    }
+    for( x in 1 until 10) {    // 1..9
+    println(x)
+    }
+    println(sum)
 
+    var index = 0
+    while (index < 10){
+        println("current index : ${index}")
+        index ++
+    }
+}
 
+// 7. Nullable / NotNull
+
+fun nullcheck(){
+    // NPE : Null pointer Exception
+
+    var name : String = "Junlodywn"
+    var nullName : String? = null
+
+    var nameInUpperCase = name.toUpperCase()
+    println(nameInUpperCase)
+    var nullNameInUpperCase = nullName?.toUpperCase()
+    println(nullNameInUpperCase)
+
+    // ?:
+    val lastName : String? = null
+    val fullName = name + (lastName?: "No Lastname")
+    // default 값을 준것, lastName이 값이 있다면 값을 주고 없으면 뒤 행동을 해라
+    println(fullName)
+}
+
+// !!
+fun ignoreNulls(str : String?){
+    val mNotNull : String = str!!   // Null이 아니라고 보증해줌.
+    val upper = mNotNull.uppercase()
+    print(upper)
+
+    val email : String?= "dlawnsgud427@naver.com"
+    email?.let {
+        println("my email is ${it}")    // ${it}, ${name} 같은 것임.
+    }
+
+}
 
 
